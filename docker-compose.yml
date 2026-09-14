@@ -8,6 +8,10 @@ services:
         # Đưa các biến môi trường từ file .env vào quá trình build của Docker
         - VITE_API_URL=${VITE_API_URL}
         - VITE_GOOGLE_CLIENT_ID=${VITE_GOOGLE_CLIENT_ID}
+        - VITE_SSO_API_URL=${VITE_SSO_API_URL}
+        - VITE_SSO_PORTAL_URL=${VITE_SSO_PORTAL_URL}
+        - VITE_SSO_CLIENT_ID=${VITE_SSO_CLIENT_ID}
+        - VITE_SSO_REDIRECT_URI=${VITE_SSO_REDIRECT_URI}
     image: ghcr.io/researchpulse/scientificjournalsystem-fe:latest
     container_name: researchpulse_frontend
     restart: unless-stopped

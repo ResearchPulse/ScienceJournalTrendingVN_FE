@@ -19,7 +19,7 @@ import {
   resendActivationEmail,
   updateCurrentProfile,
 } from '../services/authService';
-import { ssoLogin, startGoogleSso } from '../services/centralSso';
+import { startGoogleSso } from '../services/centralSso';
 
 /**
  * Gom toàn bộ thao tác auth vào một hook duy nhất.

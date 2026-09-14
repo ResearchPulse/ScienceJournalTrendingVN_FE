@@ -17,7 +17,6 @@ import {
 } from '../../profile/api/profile.api';
 import { removeToken } from '../../../shared/utils/auth';
 import { logoutSsoSession } from './ssoSession';
-import { ssoLogin } from './centralSso';
 import { resolveLoginUser } from './authIdentity';
 
 /**
@@ -44,14 +43,17 @@ const decodeToken = (token) => {
  */
 export const loginWithPassword = async (email, password, remember = true) => {
   // ưu tiên dev: gửi remember lên BE
-  const response = await ssoLogin(email, password);
+  const response = await loginApi({ email, password, remember });
 
   // giữ chức năng HEAD: hỗ trợ nhiều format token từ response
-  const token = null;
-  const user = response.data?.user || null;
+  const body = response.data;
+  const token = body?.data?.token || body?.token || null;
+  const user = token
+    ? resolveLoginUser({ responseBody: body, tokenPayload: decodeToken(token), fallbackEmail: email })
+    : body?.data?.user || body?.user || null;
 
   return {
-    response: response.data,
+    response: body,
     token,
     email: user?.email || email,
     user,

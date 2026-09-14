@@ -1,4 +1,9 @@
-import { ssoMe, ssoLogout } from './centralSso';
+import api from '../../../shared/services/api';
+import {
+  consumePendingSsoRequest,
+  discardPendingSsoRequest,
+  ssoLogout,
+} from './centralSso';
 import { useAuthStore } from '../../../app/store/authStore';
 import { useUserStore } from '../../../app/store/userStore';
 import { createSessionInitializer, getAuthenticatedSessionFromState } from './ssoSessionContract';
@@ -11,8 +16,11 @@ const setAuthenticatedUser = (user) => {
 };
 
 const checkChildSession = async () => {
-  const response = await ssoMe();
-  const user = response.data?.user;
+  const response = await api.get('/auth/check-auth', {
+    skipBearer: true,
+    skipAuthRefresh: true,
+  });
+  const user = response.data?.data?.user || response.data?.data || response.data?.user;
   if (!user) throw new Error('Authenticated response did not include a user');
   return setAuthenticatedUser(user);
 };
@@ -88,12 +96,39 @@ export const explicitSsoLogin = async () => {
   return checkChildSession();
 };
 
+export const completeSsoAuthorization = async ({ code, state }) => {
+  if (!code || !state) throw new Error('Thiếu mã xác thực SSO');
+
+  const pending = consumePendingSsoRequest(state);
+  await api.post('/auth/sso/login', {
+    code,
+    client_id: pending.clientId,
+    redirect_uri: pending.redirectUri,
+    code_verifier: pending.codeVerifier,
+  }, {
+    skipBearer: true,
+    skipAuthRefresh: true,
+  });
+
+  const session = await checkChildSession();
+  return { ...session, returnTo: pending.returnTo };
+};
+
 export const logoutSsoSession = async () => {
+  try {
+    await api.post('/auth/logout', null, {
+      skipBearer: true,
+      skipAuthRefresh: true,
+    });
+  } catch {
+    // The local child session must still be cleared on a network/API failure.
+  }
   try {
     await ssoLogout();
   } catch {
-    // Non-fatal: still proceed to wipe local session
+    // Central SSO logout is best-effort; the child session is already cleared above.
   } finally {
+    discardPendingSsoRequest();
     clearClientStorageAndCookies();
     useAuthStore.getState().logout();
     useUserStore.getState().setUser?.(null);
