@@ -1,15 +1,17 @@
+import React from 'react';
 import { useTranslation } from 'react-i18next';
+import Button from '../../../shared/ui/components/Button/Button';
 
 /**
  * Thẻ form thông tin tài khoản: các trường chỉnh sửa, nút lưu và danger zone.
  */
 export default function ProfileFormCard({
-  formData,
-  setField,
-  onSave,
-  isSaving,
-  onRequestDelete,
-  onLogout,
+  formData = {},
+  setField = () => {},
+  onSave = () => {},
+  isSaving = false,
+  onRequestDelete = () => {},
+  onLogout = () => {},
 }) {
   const { i18n } = useTranslation();
   const isVi = i18n.resolvedLanguage?.startsWith('vi');
@@ -40,7 +42,7 @@ export default function ProfileFormCard({
           <label>{lastNameLabel}</label>
           <input
             type="text"
-            value={formData.last_name}
+            value={formData.last_name || ''}
             onChange={(e) => setField('last_name', e.target.value)}
           />
         </div>
@@ -49,14 +51,14 @@ export default function ProfileFormCard({
           <label>{firstNameLabel}</label>
           <input
             type="text"
-            value={formData.first_name}
+            value={formData.first_name || ''}
             onChange={(e) => setField('first_name', e.target.value)}
           />
         </div>
 
         <div className="form-group">
           <label>{emailLabel}</label>
-          <input type="email" value={formData.email} readOnly className="readonly-input" />
+          <input type="email" value={formData.email || ''} readOnly className="readonly-input" />
         </div>
 
         <div className="form-group">
@@ -84,7 +86,7 @@ export default function ProfileFormCard({
           <label>{dobLabel}</label>
           <input
             type="date"
-            value={formData.date_of_birth}
+            value={formData.date_of_birth || ''}
             onChange={(e) => setField('date_of_birth', e.target.value)}
           />
         </div>
@@ -94,27 +96,42 @@ export default function ProfileFormCard({
         <label>AVATAR URL</label>
         <input
           type="text"
-          value={formData.url_image}
+          value={formData.url_image || ''}
           onChange={(e) => setField('url_image', e.target.value)}
           placeholder="https://example.com/avatar.png"
         />
       </div>
 
-      <div className="button-area" style={{ display: 'flex', gap: '12px', justifyContent: 'flex-end' }}>
-        <button type="button" className="logout-card-btn" onClick={onLogout}>
+      <div className="button-area d-flex gap-3 justify-content-end align-items-center mt-4">
+        <Button
+          type="button"
+          variant="outline"
+          onClick={onLogout}
+        >
           {logoutText}
-        </button>
-        <button className="save-btn" onClick={onSave} disabled={isSaving}>
+        </Button>
+        <Button
+          type="button"
+          variant="primary"
+          onClick={onSave}
+          loading={isSaving}
+          disabled={isSaving}
+        >
           {isSaving ? savingText : saveChangesText}
-        </button>
+        </Button>
       </div>
 
-      <div className="danger-zone">
-        <h3>{dangerZoneTitle}</h3>
-        <p>{dangerZoneDesc}</p>
-        <button className="delete-btn" onClick={onRequestDelete}>
+      <div className="danger-zone mt-5 p-4 rounded-3" style={{ border: '1px solid rgba(239, 68, 68, 0.2)', background: 'rgba(239, 68, 68, 0.04)' }}>
+        <h3 className="text-danger mb-1" style={{ fontSize: '1.1rem' }}>{dangerZoneTitle}</h3>
+        <p className="text-muted-custom small mb-3">{dangerZoneDesc}</p>
+        <Button
+          type="button"
+          variant="danger"
+          size="sm"
+          onClick={onRequestDelete}
+        >
           {deleteAccountText}
-        </button>
+        </Button>
       </div>
     </div>
   );

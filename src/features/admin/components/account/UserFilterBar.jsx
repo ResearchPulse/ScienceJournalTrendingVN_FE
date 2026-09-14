@@ -1,6 +1,6 @@
 import React from 'react';
 import {Form} from 'react-bootstrap';
-import Icon from '../../../../shared/components/Icon';
+import Icon from '../../../../shared/ui/primitives/Icon';
 import { SYSTEM_ROLES, ACCOUNT_STATUSES } from '../../../../shared/constants/systemConstants';
 import { useTranslation } from 'react-i18next';
 

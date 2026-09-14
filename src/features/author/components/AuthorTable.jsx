@@ -6,9 +6,9 @@
 import { Table, Row, Col } from 'react-bootstrap';
 import AuthorTableRow from './AuthorTableRow';
 import AuthorCard from './AuthorCard';
-import LoadingSkeleton from '../../../shared/components/LoadingSkeleton';
-import EmptyState from '../../../shared/components/EmptyState';
-import ErrorState from '../../../shared/components/ErrorState';
+import LoadingSkeleton from '../../../shared/ui/components/Skeleton/LoadingSkeleton';
+import EmptyState from '../../../shared/ui/feedback/EmptyState/EmptyState';
+import ErrorState from '../../../shared/ui/feedback/ErrorState/ErrorState';
 
 export default function AuthorTable({
   authors = [],

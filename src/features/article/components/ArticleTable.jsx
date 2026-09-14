@@ -7,7 +7,7 @@ import { Table, Card, Button } from 'react-bootstrap';
 import { Icon } from '@iconify/react';
 import { useTranslation } from 'react-i18next';
 import ArticleTableRow from './ArticleTableRow';
-import ScientificMathText from '../../../shared/components/ScientificMathText';
+import ScientificMathText from '../../../shared/ui/components/ScientificMath/ScientificMathText';
 import { toScientificPlainText } from '../../../shared/utils/scientificMath';
 import useBookmark from '../../bookmark/hooks/useBookmark';
 import { toast } from '../../../shared/utils/toast';

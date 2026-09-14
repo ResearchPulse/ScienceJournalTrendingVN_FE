@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import Icon from '../../../shared/components/Icon';
-import ROUTES from '../../../app/routes/routePaths';
+import Icon from '../../../shared/ui/primitives/Icon';
+import ROUTES from '../../../app/router/routePaths';
 
 export default function ForgotPasswordSuccess({ onResend, isLoading }) {
   const [countdown, setCountdown] = useState(60);

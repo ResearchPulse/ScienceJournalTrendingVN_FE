@@ -1,10 +1,12 @@
-import { jwtDecode } from 'jwt-decode';
 import api from '../../../shared/services/api';
+import {
+  consumePendingSsoRequest,
+  discardPendingSsoRequest,
+  ssoLogout,
+} from './centralSso';
 import { useAuthStore } from '../../../app/store/authStore';
 import { useUserStore } from '../../../app/store/userStore';
-import { classifySsoError, recoverSsoSession } from './ssoSessionContract';
-
-let initializationPromise = null;
+import { createSessionInitializer, getAuthenticatedSessionFromState } from './ssoSessionContract';
 
 const setAuthenticatedUser = (user) => {
   useUserStore.getState().setUser?.(user);
@@ -14,44 +16,13 @@ const setAuthenticatedUser = (user) => {
 };
 
 const checkChildSession = async () => {
-  const response = await api.get('/auth/check-auth', { skipBearer: true, skipAuthRefresh: true });
-  const token = response.data?.access_token || response.data?.token || null;
-  let user = response.data?.data || response.data?.user;
-
-  if (!user && token) {
-    try {
-      const decoded = jwtDecode(token);
-      user = {
-        user_id: decoded.user_id || decoded.sub || decoded.id,
-        email: decoded.email,
-        role: decoded.role,
-        ...decoded,
-      };
-    } catch {
-      // ignore token decode failure
-    }
-  }
-
+  const response = await api.get('/auth/check-auth', {
+    skipBearer: true,
+    skipAuthRefresh: true,
+  });
+  const user = response.data?.data?.user || response.data?.data || response.data?.user;
   if (!user) throw new Error('Authenticated response did not include a user');
   return setAuthenticatedUser(user);
-};
-
-const automaticBootstrap = async () => {
-  for (let attempt = 0; attempt < 2; attempt += 1) {
-    try {
-      await api.post('/auth/sso/bootstrap', null, { skipBearer: true, skipAuthRefresh: true });
-      return await checkChildSession();
-    } catch (error) {
-      if (error.response?.status === 409 && error.response?.data?.code === 'LEGACY_COOKIE_CLEARED' && attempt === 0) {
-        continue;
-      }
-      const classification = classifySsoError(error);
-      if (classification === 'sso-blocked') return { status: 'sso-blocked' };
-      if (classification === 'anonymous') return { status: 'anonymous' };
-      if (classification === 'error') return { status: 'error', error };
-      throw error;
-    }
-  }
 };
 
 const clearClientStorage = () => {
@@ -105,41 +76,63 @@ export const clearClientStorageAndCookies = () => {
   }
 };
 
-export const initializeSsoSession = () => {
-  if (initializationPromise) return initializationPromise;
-  initializationPromise = (async () => {
-    try {
-      clearClientStorage();
+const sessionInitializer = createSessionInitializer(async () => {
+    clearClientStorage();
+    useAuthStore.getState().logout();
+    try { return await checkChildSession(); }
+    catch (error) {
       useAuthStore.getState().logout();
-      return await recoverSsoSession({
-        checkChildSession,
-        bootstrapSession: automaticBootstrap,
-      });
-    } catch (error) {
-      useAuthStore.getState().logout();
+      if (error.response?.status === 401) return { status: 'anonymous' };
       throw error;
-    } finally {
-      initializationPromise = null;
     }
-  })();
-  return initializationPromise;
+});
+
+export const initializeSsoSession = () => {
+  const currentSession = getAuthenticatedSessionFromState(useAuthStore.getState());
+  return currentSession ? Promise.resolve(currentSession) : sessionInitializer.run();
 };
 
 export const explicitSsoLogin = async () => {
-  const response = await api.post('/auth/sso/login', null, { skipBearer: true, skipAuthRefresh: true });
-  return setAuthenticatedUser(response.data?.data || response.data?.user);
+  return checkChildSession();
+};
+
+export const completeSsoAuthorization = async ({ code, state }) => {
+  if (!code || !state) throw new Error('Thiếu mã xác thực SSO');
+
+  const pending = consumePendingSsoRequest(state);
+  await api.post('/auth/sso/login', {
+    code,
+    client_id: pending.clientId,
+    redirect_uri: pending.redirectUri,
+    code_verifier: pending.codeVerifier,
+  }, {
+    skipBearer: true,
+    skipAuthRefresh: true,
+  });
+
+  const session = await checkChildSession();
+  return { ...session, returnTo: pending.returnTo };
 };
 
 export const logoutSsoSession = async () => {
   try {
-    await api.post('/auth/logout', {}, { skipBearer: true, skipAuthRefresh: true });
+    await api.post('/auth/logout', null, {
+      skipBearer: true,
+      skipAuthRefresh: true,
+    });
   } catch {
-    // Non-fatal: still proceed to wipe local session
+    // The local child session must still be cleared on a network/API failure.
+  }
+  try {
+    await ssoLogout();
+  } catch {
+    // Central SSO logout is best-effort; the child session is already cleared above.
   } finally {
+    discardPendingSsoRequest();
     clearClientStorageAndCookies();
     useAuthStore.getState().logout();
     useUserStore.getState().setUser?.(null);
     useUserStore.getState().setEmail?.(null);
-    initializationPromise = null;
+    sessionInitializer.reset();
   }
 };

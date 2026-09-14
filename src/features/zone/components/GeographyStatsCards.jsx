@@ -1,6 +1,6 @@
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
-import StatCard from '../../../shared/components/StatCard';
+import StatCard from '../../../shared/ui/components/Card/StatCard';
 
 export default function GeographyStatsCards({ 
   countryStats = [], 

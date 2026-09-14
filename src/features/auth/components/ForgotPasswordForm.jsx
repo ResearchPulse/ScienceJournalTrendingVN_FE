@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import InputField from '../../../shared/components/InputField';
-import ROUTES from '../../../app/routes/routePaths';
+import InputField from '../../../shared/ui/form/FormField/InputField';
+import ROUTES from '../../../app/router/routePaths';
 import SubmitButton from './SubmitButton';
 import FormErrorMessage from './FormErrorMessage';
 

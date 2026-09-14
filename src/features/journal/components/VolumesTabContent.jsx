@@ -7,8 +7,8 @@ import { useState } from 'react';
 import { Spinner, Button } from 'react-bootstrap';
 import { Icon } from '@iconify/react';
 import { useNavigate } from 'react-router-dom';
-import LoadingSkeleton from '../../../shared/components/LoadingSkeleton';
-import AdminPagination from '../../../shared/components/Pagination';
+import LoadingSkeleton from '../../../shared/ui/components/Skeleton/LoadingSkeleton';
+import AdminPagination from '../../../shared/ui/components/Pagination/Pagination';
 
 const MONTH_NAMES = [
   '', 'Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4',

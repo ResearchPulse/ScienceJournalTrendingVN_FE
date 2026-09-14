@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import Icon from '../../../shared/components/Icon';
+import Icon from '../../../shared/ui/primitives/Icon';
 
 /**
  * Sidebar hồ sơ: avatar, tên, vai trò, trạng thái và khối hoạt động.

@@ -1,4 +1,4 @@
-import Icon from '../../../../shared/components/Icon';
+import Icon from '../../../../shared/ui/primitives/Icon';
 
 export default function DashboardStatCard({ label, value, icon, note, noteType }) {
   const safeNoteType = noteType || 'neutral';

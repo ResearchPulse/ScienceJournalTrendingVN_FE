@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from '../../../shared/utils/toast';
 import { getArticleDetailApi, updateArticleApi, deleteArticleApi } from '../../article/api/articleApi';
 import api from '../../../shared/services/api';
-import ROUTES from '../../../app/routes/routePaths';
+import ROUTES from '../../../app/router/routePaths';
 
 const toInputDate = (dateStr) => {
   if (!dateStr) return '';

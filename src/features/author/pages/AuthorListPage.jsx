@@ -7,14 +7,14 @@ import { useEffect, useRef, useState } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import { Container, Row, Col, Form, InputGroup, Card, Button } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
-import Icon from '../../../shared/components/Icon';
+import Icon from '../../../shared/ui/primitives/Icon';
 import Header from '../../landing/components/Header';
 import useAuthors from '../hooks/useAuthors';
 import AuthorTable from '../components/AuthorTable';
 import AuthorCard from '../components/AuthorCard';
-import LoadingSkeleton from '../../../shared/components/LoadingSkeleton';
+import LoadingSkeleton from '../../../shared/ui/components/Skeleton/LoadingSkeleton';
 import AuthorNavigationTabs from '../components/AuthorNavigationTabs';
-import AdminPagination from '../../../shared/components/Pagination';
+import AdminPagination from '../../../shared/ui/components/Pagination/Pagination';
 import './AuthorListPage.css';
 
 export default function AuthorListPage() {

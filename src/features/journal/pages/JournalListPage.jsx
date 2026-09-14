@@ -10,7 +10,7 @@ import JournalStatsCards from '../components/JournalStatsCards';
 import JournalSearchBar from '../components/JournalSearchBar';
 import JournalTable from '../components/JournalTable';
 import useJournalList from '../hooks/useJournalList';
-import AdminPagination from '../../../shared/components/Pagination';
+import AdminPagination from '../../../shared/ui/components/Pagination/Pagination';
 import './JournalListPage.css';
 
 export default function JournalListPage() {

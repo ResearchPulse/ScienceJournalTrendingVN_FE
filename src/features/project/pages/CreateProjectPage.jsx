@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import ROUTES from '../../../app/routes/routePaths';
+import ROUTES from '../../../app/router/routePaths';
 import useProjects from '../hooks/useProjects';
 import { Icon } from '@iconify/react';
 import { getSubjectAreasApi, getSubjectCategoriesApi } from '../../catalog/api/catalogApi';
 import { searchJournalsApi } from '../../journal/api/journalApi';
-import MultiSelectDropdown from '../../../shared/components/Select/MultiSelectDropdown';
+import MultiSelectDropdown from '../../../shared/ui/components/Select/MultiSelectDropdown';
 import { useProjectText } from '../i18n/useProjectText';
 
 const CreateProjectPage = () => {

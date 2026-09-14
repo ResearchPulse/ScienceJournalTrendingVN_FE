@@ -66,6 +66,10 @@ jobs:
         build-args: |
           VITE_API_URL=${{ vars.VITE_API_URL }}
           VITE_GOOGLE_CLIENT_ID=${{ vars.VITE_GOOGLE_CLIENT_ID }}
+          VITE_SSO_API_URL=${{ vars.VITE_SSO_API_URL }}
+          VITE_SSO_PORTAL_URL=${{ vars.VITE_SSO_PORTAL_URL }}
+          VITE_SSO_CLIENT_ID=${{ vars.VITE_SSO_CLIENT_ID }}
+          VITE_SSO_REDIRECT_URI=${{ vars.VITE_SSO_REDIRECT_URI }}
 
   deploy:
     name: Continuous Deployment (CD)

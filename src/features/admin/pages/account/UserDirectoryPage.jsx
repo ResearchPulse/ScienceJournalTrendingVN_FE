@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Row, Col, Card, ProgressBar, Button } from 'react-bootstrap';
-import Pagination from '../../../../shared/components/Pagination';
+import Pagination from '../../../../shared/ui/components/Pagination/Pagination';
 import { useNavigate } from 'react-router-dom';
-import Icon from '../../../../shared/components/Icon';
+import Icon from '../../../../shared/ui/primitives/Icon';
 import UserTable from '../../components/account/UserTable';
 import UserFilterBar from '../../components/account/UserFilterBar';
 import { getAdminUsers } from '../../api/adminUsers.api';
-import ROUTES from '../../../../app/routes/routePaths';
+import ROUTES from '../../../../app/router/routePaths';
 
 const ITEMS_PER_PAGE = 10;
 

@@ -22,11 +22,11 @@ import useArticleAnalytics from "../../article/hooks/useArticleAnalytics";
 import useArticleEntityLabels from "../../article/hooks/useArticleEntityLabels";
 import useArticleAnalysis from "../hooks/useArticleAnalysis";
 import ArticleTable from "../../article/components/ArticleTable";
-import AdminPagination from "../../../shared/components/Pagination";
+import AdminPagination from "../../../shared/ui/components/Pagination/Pagination";
 import PublisherGrid from "../components/PublisherGrid";
-import SearchableSelect from "../../../shared/components/Select/SearchableSelect";
+import SearchableSelect from "../../../shared/ui/components/Select/SearchableSelect";
 import TrendingArticleCard from "../components/TrendingArticleCard";
-import PageLoadingBar from "../../../shared/components/PageLoadingBar";
+import PageLoadingBar from "../../../shared/ui/feedback/PageLoadingBar/PageLoadingBar";
 import TrendingShareModal from "../components/TrendingShareModal";
 import TrendingExportModal from "../components/TrendingExportModal";
 

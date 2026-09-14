@@ -1,7 +1,7 @@
 import React from 'react';
 import { useUserStore } from '../store/userStore';
 import { useAuthStore } from '../store/authStore';
-import Icon from '../../shared/components/Icon';
+import Icon from '../../shared/ui/primitives/Icon';
 
 /**
  * AdminHeader Component

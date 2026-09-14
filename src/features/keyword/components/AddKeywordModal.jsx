@@ -3,8 +3,8 @@ import { Modal, Button, Form } from 'react-bootstrap';
 import { Icon } from '@iconify/react';
 import { useTranslation } from 'react-i18next';
 import { useProjectText } from '../../project/i18n/useProjectText';
-import keywordApi from '../../keywords/api/keywordApi';
-import { normalizeKeywordListResponse } from '../../keywords/services/keywordService';
+import keywordApi from '../api/keywordApi';
+import { normalizeKeywordListResponse } from '../services/keywordService';
 
 const DEFAULT_SUGGESTIONS = [
   { id: 'def-1', display_name: 'Computer Science' },

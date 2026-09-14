@@ -12,10 +12,10 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import Button from "react-bootstrap/Button";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Dropdown from "react-bootstrap/Dropdown";
-import Icon from "../../../shared/components/Icon";
+import Icon from "../../../shared/ui/primitives/Icon";
 import useAuth from "../../auth/hooks/useAuth";
 import { useUserStore } from "../../../app/store/userStore";
-import ROUTES from "../../../app/routes/routePaths";
+import ROUTES from "../../../app/router/routePaths";
 
 export default function Header() {
   const { t, i18n } = useTranslation();

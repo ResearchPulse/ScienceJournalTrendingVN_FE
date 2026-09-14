@@ -17,6 +17,7 @@ import {
 } from '../../profile/api/profile.api';
 import { removeToken } from '../../../shared/utils/auth';
 import { logoutSsoSession } from './ssoSession';
+import { resolveLoginUser } from './authIdentity';
 
 /**
  * Safely extract email-like identity from JWT payload.
@@ -24,12 +25,11 @@ import { logoutSsoSession } from './ssoSession';
  * @param {string} token - JWT access token.
  * @returns {string} Email/sub fallback for display.
  */
-const getEmailFromToken = (token) => {
+const decodeToken = (token) => {
   try {
-    const decoded = jwtDecode(token);
-    return decoded.email || decoded.sub || 'User';
+    return jwtDecode(token);
   } catch {
-    return 'User';
+    return {};
   }
 };
 
@@ -39,22 +39,24 @@ const getEmailFromToken = (token) => {
  * @param {string} email - User email.
  * @param {string} password - User password.
  * @param {boolean} remember - Remember login flag.
- * @returns {Promise<{response: Object, token: string|null, email: string}>}
+ * @returns {Promise<{response: Object, token: string|null, email: string, user: Object|null}>}
  */
 export const loginWithPassword = async (email, password, remember = true) => {
   // ưu tiên dev: gửi remember lên BE
   const response = await loginApi({ email, password, remember });
 
   // giữ chức năng HEAD: hỗ trợ nhiều format token từ response
-  let token = response.data?.data?.token;
-  if (!token) {
-    token = response.data?.token;
-  }
+  const body = response.data;
+  const token = body?.data?.token || body?.token || null;
+  const user = token
+    ? resolveLoginUser({ responseBody: body, tokenPayload: decodeToken(token), fallbackEmail: email })
+    : body?.data?.user || body?.user || null;
 
   return {
-    response: response.data,
-    token: token || null,
-    email: token ? getEmailFromToken(token) : email,
+    response: body,
+    token,
+    email: user?.email || email,
+    user,
   };
 };
 
@@ -63,17 +65,22 @@ export const loginWithPassword = async (email, password, remember = true) => {
  * Exchange Google auth code for backend token.
  *
  * @param {string} code - Google OAuth auth code.
- * @returns {Promise<{response: Object, token: string|null, email: string}>}
+ * @returns {Promise<{response: Object, token: string|null, email: string, user: Object|null}>}
  */
 export const loginWithGoogleCode = async (code) => {
   const result = await loginGoogleApi(code);
   const body = result.data;
   const token = body?.data?.token;
 
+  const user = token
+    ? resolveLoginUser({ responseBody: body, tokenPayload: decodeToken(token) })
+    : null;
+
   return {
     response: body,
     token: token || null,
-    email: token ? getEmailFromToken(token) : 'User',
+    email: user?.email || 'User',
+    user,
   };
 };
 

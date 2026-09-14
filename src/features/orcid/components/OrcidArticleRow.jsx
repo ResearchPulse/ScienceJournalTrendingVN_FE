@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLocation, useNavigate } from 'react-router-dom';
-import Icon from '../../../shared/components/Icon';
+import Icon from '../../../shared/ui/primitives/Icon';
 import { buildOrcidArticleDetailNavigation } from '../utils/orcid';
 
 export default function OrcidArticleRow({ article, isLast = false }) {

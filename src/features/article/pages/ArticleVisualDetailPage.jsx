@@ -24,8 +24,8 @@ import ArticleDetailSkeleton from '../components/ArticleDetailSkeleton';
 import ArticleDetailEmpty from '../components/ArticleDetailEmpty';
 import ArticleDetailError from '../components/ArticleDetailError';
 
-import AuthRequiredModal from '../../../shared/components/AuthRequiredModal';
-import ScientificMathText from '../../../shared/components/ScientificMathText';
+import AuthRequiredModal from '../../../shared/ui/components/Modal/AuthRequiredModal';
+import ScientificMathText from '../../../shared/ui/components/ScientificMath/ScientificMathText';
 
 import { toast } from '../../../shared/utils/toast';
 import { getDoiUrl, normalizeArticleDetail } from '../utils/articleFormatters';

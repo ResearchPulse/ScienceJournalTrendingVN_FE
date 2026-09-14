@@ -3,8 +3,8 @@ import { Alert, Card } from 'react-bootstrap';
 import { useNavigate, useParams, Link } from 'react-router-dom';
 import UserAccountForm from '../../components/account/UserAccountForm';
 import { getAdminUserById, updateAdminUser } from '../../api/adminUsers.api';
-import Icon from '../../../../shared/components/Icon';
-import ROUTES from '../../../../app/routes/routePaths';
+import Icon from '../../../../shared/ui/primitives/Icon';
+import ROUTES from '../../../../app/router/routePaths';
 
 const getApiErrorMessage = (error, fallback) => {
   if (error.response?.status === 403) {

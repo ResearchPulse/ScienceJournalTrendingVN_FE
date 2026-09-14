@@ -21,7 +21,7 @@ import JournalTabs from '../components/JournalTabs';
 import RankingTabContent from '../components/RankingTabContent';
 import VolumesTabContent from '../components/VolumesTabContent';
 import ArticlesTabContent from '../components/ArticlesTabContent';
-import AuthRequiredModal from '../../../shared/components/AuthRequiredModal';
+import AuthRequiredModal from '../../../shared/ui/components/Modal/AuthRequiredModal';
 import AddToProjectModal from '../components/AddToProjectModal';
 import '../components/JournalDetail.css';
 

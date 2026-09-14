@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {Badge} from 'react-bootstrap';
-import Icon from '../../../../shared/components/Icon';
+import Icon from '../../../../shared/ui/primitives/Icon';
 
 /**
  * KeywordInput Component

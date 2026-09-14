@@ -1,8 +1,6 @@
+import React from 'react';
+import LoadingState from '../../../shared/ui/feedback/LoadingState/LoadingState';
+
 export default function ProfileLoadingState() {
-  return (
-    <div className="loading-state">
-      <div className="spinner"></div>
-      <p>Đang tải dữ liệu...</p>
-    </div>
-  );
+  return <LoadingState message="Đang tải dữ liệu hồ sơ..." />;
 }

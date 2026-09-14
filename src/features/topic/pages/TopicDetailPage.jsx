@@ -9,7 +9,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import Header from '../../landing/components/Header';
 import { getTopicByIdApi, getTopicArticlesApi } from '../api/topic.api';
-import AdminPagination from '../../../shared/components/Pagination';
+import AdminPagination from '../../../shared/ui/components/Pagination/Pagination';
 import './TopicDetailPage.css';
 
 const PAGE_SIZE = 10;

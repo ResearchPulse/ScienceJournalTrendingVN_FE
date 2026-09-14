@@ -6,10 +6,10 @@
 import { useState } from 'react';
 import { Card, Form } from 'react-bootstrap';
 import AuthorArticleRow from './AuthorArticleRow';
-import LoadingSkeleton from '../../../shared/components/LoadingSkeleton';
-import EmptyState from '../../../shared/components/EmptyState';
-import ErrorState from '../../../shared/components/ErrorState';
-import AdminPagination from '../../../shared/components/Pagination';
+import LoadingSkeleton from '../../../shared/ui/components/Skeleton/LoadingSkeleton';
+import EmptyState from '../../../shared/ui/feedback/EmptyState/EmptyState';
+import ErrorState from '../../../shared/ui/feedback/ErrorState/ErrorState';
+import AdminPagination from '../../../shared/ui/components/Pagination/Pagination';
 
 export default function AuthorArticlesSection({
   articles = [],

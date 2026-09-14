@@ -5,8 +5,8 @@
  */
 import { Card, Button } from 'react-bootstrap';
 import { Icon } from '@iconify/react';
-import LoadingSkeleton from '../../../shared/components/LoadingSkeleton';
-import ScientificMathText from '../../../shared/components/ScientificMathText';
+import LoadingSkeleton from '../../../shared/ui/components/Skeleton/LoadingSkeleton';
+import ScientificMathText from '../../../shared/ui/components/ScientificMath/ScientificMathText';
 
 export default function ArticlesTabContent({ recentArticles = [], loading, onArticleClick, emptyMessage }) {
   if (loading) {

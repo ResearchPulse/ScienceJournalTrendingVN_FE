@@ -4,7 +4,7 @@ import AuthBanner from '../components/AuthBanner';
 import ForgotPasswordForm from '../components/ForgotPasswordForm';
 import ForgotPasswordSuccess from '../components/ForgotPasswordSuccess';
 import { forgotPasswordApi } from '../api/auth.api';
-import Icon from '../../../shared/components/Icon';
+import Icon from '../../../shared/ui/primitives/Icon';
 
 export default function ForgotPasswordPage() {
   const [isLoading, setIsLoading] = useState(false);

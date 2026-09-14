@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { Table, InputGroup, Form } from 'react-bootstrap';
 import { Icon } from '@iconify/react';
-import AdminPagination from '../../../shared/components/Pagination';
+import AdminPagination from '../../../shared/ui/components/Pagination/Pagination';
 
 export default function CountryStatsTable({ 
   countries = [], 

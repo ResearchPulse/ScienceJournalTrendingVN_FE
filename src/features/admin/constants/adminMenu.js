@@ -1,4 +1,4 @@
-﻿import ROUTES from '../../../app/routes/routePaths';
+﻿import ROUTES from '../../../app/router/routePaths';
 
 const ADMIN_MENU = [
   // Trang tổng quan: Total Journals, Total Articles, Pending Reviews, Active Users,

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Row, Col, Form, Button } from 'react-bootstrap';
-import Icon from '../../../../shared/components/Icon';
+import Icon from '../../../../shared/ui/primitives/Icon';
 import { SYSTEM_ROLES } from '../../../../shared/constants/systemConstants';
 
 const getUserInitial = (name = '', email = '') => {

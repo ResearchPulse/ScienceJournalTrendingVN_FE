@@ -1,5 +1,5 @@
 import { NavLink, useLocation } from 'react-router-dom';
-import Icon from '../../../shared/components/Icon';
+import Icon from '../../../shared/ui/primitives/Icon';
 import ADMIN_MENU from '../constants/adminMenu';
 import { useTranslation } from 'react-i18next';
 
