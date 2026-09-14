@@ -4,7 +4,7 @@
  * File: features\journal\components\RankingTabContent.jsx
  */
 import { Row, Col, Table } from 'react-bootstrap';
-import LoadingSkeleton from '../../../shared/components/LoadingSkeleton';
+import LoadingSkeleton from '../../../shared/ui/components/Skeleton/LoadingSkeleton';
 
 export default function RankingTabContent({ rankingHistory = [], metricName = 'Impact Factor', loading }) {
   if (loading) {

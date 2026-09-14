@@ -19,12 +19,12 @@ import { getDoiUrl } from '../../article/utils/articleFormatters';
 import { toast } from '../../../shared/utils/toast';
 import { useTrendingArticleDetail } from '../hooks/useTrendingArticleDetail';
 import { getArticlesListApi } from '../../article/api/articleApi';
-import ScientificMathText from '../../../shared/components/ScientificMathText';
+import ScientificMathText from '../../../shared/ui/components/ScientificMath/ScientificMathText';
 import { toScientificPlainText } from '../../../shared/utils/scientificMath';
 import {
   
   buildAuthorDetailPath,
-} from '../../../app/routes/routePaths';
+} from '../../../app/router/routePaths';
 import {
   getHiddenArticleDetailAuthorCount,
   getVisibleArticleDetailAuthors,
@@ -39,7 +39,7 @@ import ArticleDetailSkeleton from '../../article/components/ArticleDetailSkeleto
 import ArticleDetailEmpty from '../../article/components/ArticleDetailEmpty';
 import ArticleDetailError from '../../article/components/ArticleDetailError';
 
-import AuthRequiredModal from '../../../shared/components/AuthRequiredModal';
+import AuthRequiredModal from '../../../shared/ui/components/Modal/AuthRequiredModal';
 
 
 import '../trendingVN.css';

@@ -9,7 +9,7 @@ import useAuth from '../hooks/useAuth';
 import AuthLayout from '../../../app/layouts/AuthLayout';
 import AuthBanner from '../components/AuthBanner';
 import RegisterForm from '../components/RegisterForm';
-import Icon from '../../../shared/components/Icon';
+import Icon from '../../../shared/ui/primitives/Icon';
 
 export default function RegisterPage() {
   const navigate = useNavigate();

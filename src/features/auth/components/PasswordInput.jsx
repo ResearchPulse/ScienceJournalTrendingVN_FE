@@ -1,11 +1,12 @@
 /**
  * File source thuộc hệ thống FE ResearchPulse.
  *
- * File: features\auth\components\PasswordInput.jsx
+ * File: features/auth/components/PasswordInput.jsx
  */
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Form, InputGroup } from 'react-bootstrap';
-import Icon from '../../../shared/components/Icon';
+import Icon from '../../../shared/ui/primitives/Icon';
+import FormError from '../../../shared/ui/form/FormError/FormError';
 
 export default function PasswordInput({
   label,
@@ -45,7 +46,7 @@ export default function PasswordInput({
       <InputGroup 
         className="rounded-3 overflow-hidden border"
         style={{
-          borderColor: error ? '#ef4444' : (isFocused ? 'var(--primary)' : 'var(--border)'),
+          borderColor: error ? 'var(--danger, #ef4444)' : (isFocused ? 'var(--primary)' : 'var(--border)'),
           background: '#ffffff',
           transition: 'all 0.2s ease-in-out',
           boxShadow: error 
@@ -97,16 +98,7 @@ export default function PasswordInput({
         </InputGroup.Text>
       </InputGroup>
       
-      {error && (
-        <div 
-          className="text-danger text-xs mt-1.5 d-flex align-items-center gap-1 animate-fade-in"
-          style={{ fontWeight: 500 }}
-        >
-          <Icon icon="lucide:alert-circle" width="12" />
-          <span>{error}</span>
-        </div>
-      )}
+      {error && <FormError>{error}</FormError>}
     </Form.Group>
   );
 }
-

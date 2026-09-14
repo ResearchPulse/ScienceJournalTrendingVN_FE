@@ -1,11 +1,11 @@
 import { Button } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import EmptyState from '../../../shared/components/EmptyState';
-import ErrorState from '../../../shared/components/ErrorState';
-import LoadingSkeleton from '../../../shared/components/LoadingSkeleton';
-import PaginationControls from '../../../shared/components/PaginationControls';
-import Icon from '../../../shared/components/Icon';
+import EmptyState from '../../../shared/ui/feedback/EmptyState/EmptyState';
+import ErrorState from '../../../shared/ui/feedback/ErrorState/ErrorState';
+import LoadingSkeleton from '../../../shared/ui/components/Skeleton/LoadingSkeleton';
+import PaginationControls from '../../../shared/ui/components/Pagination/PaginationControls';
+import Icon from '../../../shared/ui/primitives/Icon';
 import OrcidArticleRow from './OrcidArticleRow';
 
 function ResultsSkeleton() {

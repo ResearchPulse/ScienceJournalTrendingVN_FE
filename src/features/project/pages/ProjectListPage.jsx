@@ -1,11 +1,11 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Modal } from 'react-bootstrap';
-import ROUTES from '../../../app/routes/routePaths';
+import ROUTES from '../../../app/router/routePaths';
 import useProjects from '../hooks/useProjects';
 import ProjectCard from '../components/ProjectCard';
-import EmptyState from '../../../shared/components/EmptyState';
-import LoadingSkeleton from '../../../shared/components/LoadingSkeleton';
+import EmptyState from '../../../shared/ui/feedback/EmptyState/EmptyState';
+import LoadingSkeleton from '../../../shared/ui/components/Skeleton/LoadingSkeleton';
 import { Icon } from '@iconify/react';
 import { useProjectText } from '../i18n/useProjectText';
 

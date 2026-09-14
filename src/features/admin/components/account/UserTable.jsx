@@ -2,7 +2,7 @@ import React from 'react';
 import { Table } from 'react-bootstrap';
 import RoleBadge from './RoleBadge';
 import UserStatusBadge from './UserStatusBadge';
-import Icon from '../../../../shared/components/Icon';
+import Icon from '../../../../shared/ui/primitives/Icon';
 import { useTranslation } from 'react-i18next';
 
 /**

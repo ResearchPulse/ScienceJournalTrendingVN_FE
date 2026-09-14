@@ -3,7 +3,7 @@
  *
  * File: features\auth\components\AuthBanner.jsx
  */
-import Icon from '../../../shared/components/Icon';
+import Icon from '../../../shared/ui/primitives/Icon';
 import { Navbar } from 'react-bootstrap';
 import { useNavigate } from "react-router-dom";
 

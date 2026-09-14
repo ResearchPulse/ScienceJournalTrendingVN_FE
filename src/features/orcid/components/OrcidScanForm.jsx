@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Button, Form, InputGroup } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
-import Icon from '../../../shared/components/Icon';
+import Icon from '../../../shared/ui/primitives/Icon';
 import { isValidOrcid, normalizeOrcid } from '../utils/orcid';
 
 export default function OrcidScanForm({

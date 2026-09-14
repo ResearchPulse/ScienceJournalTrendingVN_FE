@@ -3,9 +3,11 @@
  * @description Component thẻ hiển thị thông tin tóm tắt của một tác giả.
  */
 
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Card } from 'react-bootstrap';
+import Card from '../../../shared/ui/components/Card/Card';
 import AuthorAvatar from './AuthorAvatar';
+import './AuthorCard.css';
 
 export default function AuthorCard({ author }) {
   const navigate = useNavigate();

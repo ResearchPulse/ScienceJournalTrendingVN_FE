@@ -4,7 +4,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import ROUTES from '../../../app/routes/routePaths';
+import ROUTES from '../../../app/router/routePaths';
 import { verifyEmailApi } from '../api/auth.api';
 
 // Số giây đếm ngược trước khi tự redirect

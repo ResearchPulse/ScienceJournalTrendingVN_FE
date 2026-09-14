@@ -1,4 +1,4 @@
-import Icon from '../../../shared/components/Icon';
+import Icon from '../../../shared/ui/primitives/Icon';
 import { useAuthStore } from '../../../app/store/authStore';
 
 export default function AdminHeader() {

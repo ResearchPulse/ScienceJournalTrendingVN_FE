@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import Icon from '../../../shared/components/Icon';
+import Icon from '../../../shared/ui/primitives/Icon';
 
 const SUMMARY_ITEMS = [
   ['discovered', 'lucide:search'],

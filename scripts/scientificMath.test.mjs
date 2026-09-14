@@ -180,7 +180,7 @@ const server = await createServer({
 });
 
 try {
-  const { default: ScientificMathText } = await server.ssrLoadModule('/src/shared/components/ScientificMathText.jsx');
+  const { default: ScientificMathText } = await server.ssrLoadModule('/src/shared/ui/components/ScientificMath/ScientificMathText.jsx');
   const firstRender = renderToStaticMarkup(
     React.createElement(ScientificMathText, { as: 'div' }, 'First <math><msup><mi>x</mi><mn>2</mn></msup></math>')
   );

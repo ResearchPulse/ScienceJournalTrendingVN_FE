@@ -1,0 +1,87 @@
+.author-card {
+  height: 100%;
+  padding: 1.25rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl, 1rem);
+}
+
+.author-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--primary) !important;
+  box-shadow: var(--shadow-md, 0 10px 25px rgba(0, 0, 0, 0.08));
+}
+
+.author-card-title {
+  color: var(--text-main);
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.author-card-institution {
+  color: var(--text-main);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.author-card-subinstitution {
+  color: var(--text-muted);
+  font-size: 0.78rem;
+}
+
+.author-card-metrics {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: auto;
+  margin-bottom: 1rem;
+}
+
+.author-metric-label {
+  color: var(--text-muted);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.author-metric-value {
+  margin-top: 0.1rem;
+  color: var(--text-main);
+  font-size: 1.05rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.author-card-divider {
+  margin: 1rem 0;
+  border: 0;
+  border-top: 1px solid var(--border);
+  opacity: 0.7;
+}
+
+.author-tag {
+  display: inline-flex;
+  padding: 0.3rem 0.6rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-full, 9999px);
+  background: var(--bg-chip);
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+  transition: all 0.15s ease;
+}
+
+.author-tag:hover {
+  border-color: var(--primary);
+  background: var(--primary-light);
+  color: var(--primary);
+}
+
+.author-tag-empty {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-style: italic;
+}

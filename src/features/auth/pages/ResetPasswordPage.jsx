@@ -5,8 +5,8 @@ import AuthBanner from '../components/AuthBanner';
 import ResetPasswordForm from '../components/ResetPasswordForm';
 import ResetPasswordSuccess from '../components/ResetPasswordSuccess';
 import { resetPasswordApi } from '../api/auth.api';
-import Icon from '../../../shared/components/Icon';
-import ROUTES from '../../../app/routes/routePaths';
+import Icon from '../../../shared/ui/primitives/Icon';
+import ROUTES from '../../../app/router/routePaths';
 
 export default function ResetPasswordPage() {
   const [searchParams] = useSearchParams();

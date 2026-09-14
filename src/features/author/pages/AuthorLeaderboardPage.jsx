@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Container, Row, Col, Card, Form, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import Icon from '../../../shared/components/Icon';
+import Icon from '../../../shared/ui/primitives/Icon';
 import Header from '../../landing/components/Header';
 import useAuthors from '../hooks/useAuthors';
 import AuthorLeaderboardTable from '../components/AuthorLeaderboardTable';

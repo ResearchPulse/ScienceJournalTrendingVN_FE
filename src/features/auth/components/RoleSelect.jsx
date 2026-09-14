@@ -4,7 +4,7 @@
  * File: features\auth\components\RoleSelect.jsx
  */
 import { Form, Row, Col } from 'react-bootstrap';
-import Icon from '../../../shared/components/Icon';
+import Icon from '../../../shared/ui/primitives/Icon';
 
 const ROLES = [
   {

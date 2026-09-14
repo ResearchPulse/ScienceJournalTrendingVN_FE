@@ -5,7 +5,7 @@
  */
 import { useState, useEffect } from 'react';
 import { Form } from 'react-bootstrap';
-import InputField from '../../../shared/components/InputField';
+import InputField from '../../../shared/ui/form/FormField/InputField';
 import PasswordInput from './PasswordInput';
 import CheckboxField from './CheckboxField';
 import SubmitButton from './SubmitButton';

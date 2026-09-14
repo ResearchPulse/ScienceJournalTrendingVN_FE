@@ -6,8 +6,8 @@
 import { useState } from 'react';
 import { Form, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import ROUTES from '../../../app/routes/routePaths';
-import InputField from '../../../shared/components/InputField';
+import ROUTES from '../../../app/router/routePaths';
+import InputField from '../../../shared/ui/form/FormField/InputField';
 import PasswordInput from './PasswordInput';
 import DateInput from './DateInput';
 import GenderSelect from './GenderSelect';

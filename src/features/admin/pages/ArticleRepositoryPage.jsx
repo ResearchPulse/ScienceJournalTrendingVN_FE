@@ -6,9 +6,9 @@ import {
   EditorInsightsCard,
   PeerMatchingPromoCard,
 } from '../components/article-repository';
-import Pagination from '../../../shared/components/Pagination';
+import Pagination from '../../../shared/ui/components/Pagination/Pagination';
 import useAdminArticleRepository from '../hooks/useAdminArticleRepository';
-import ROUTES from '../../../app/routes/routePaths';
+import ROUTES from '../../../app/router/routePaths';
 
 export default function ArticleRepositoryPage() {
   const navigate = useNavigate();

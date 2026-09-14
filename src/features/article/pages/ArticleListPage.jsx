@@ -11,7 +11,7 @@ import useArticleList from '../hooks/useArticleList';
 import ArticleStatsCards from '../components/ArticleStatsCards';
 import ArticleFilterBar from '../components/ArticleFilterBar';
 import ArticleTable from '../components/ArticleTable';
-import AdminPagination from '../../../shared/components/Pagination';
+import AdminPagination from '../../../shared/ui/components/Pagination/Pagination';
 import './ArticleListPage.css';
 
 export default function ArticleListPage() {

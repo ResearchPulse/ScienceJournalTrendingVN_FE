@@ -17,7 +17,7 @@ import {
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import ScientificMathText from '../../../shared/components/ScientificMathText';
+import ScientificMathText from '../../../shared/ui/components/ScientificMath/ScientificMathText';
 import { toScientificPlainText } from '../../../shared/utils/scientificMath';
 import useBookmark from '../../bookmark/hooks/useBookmark';
 import { toast } from '../../../shared/utils/toast';

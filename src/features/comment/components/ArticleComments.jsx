@@ -1,10 +1,12 @@
 import { useEffect, useMemo, useState } from 'react';
-import { Button, Form, Spinner } from 'react-bootstrap';
+import { Form, Spinner } from 'react-bootstrap';
+import Button from '../../../shared/ui/components/Button/Button';
+import Avatar from '../../../shared/ui/primitives/Avatar';
 import { Icon } from '@iconify/react';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useTranslation } from 'react-i18next';
 import { useAuthStore } from '../../../app/store/authStore';
-import AuthRequiredModal from '../../../shared/components/AuthRequiredModal';
+import AuthRequiredModal from '../../../shared/ui/components/Modal/AuthRequiredModal';
 import { toast } from '../../../shared/utils/toast';
 import {
   createArticleCommentApi,
@@ -232,11 +234,7 @@ export default function ArticleComments({ articleId, articleIds = [] }) {
             return (
               <article key={comment.id} className="article-comment-item">
                 <div className="article-comment-avatar">
-                  {comment.avatar ? (
-                    <img src={comment.avatar} alt={comment.user || 'avatar'} />
-                  ) : (
-                    <span>{String(comment.user || 'U').charAt(0).toUpperCase()}</span>
-                  )}
+                  <Avatar name={comment.user || 'User'} url={comment.avatar} size="sm" />
                 </div>
                 <div className="article-comment-body">
                   <div className="article-comment-meta">

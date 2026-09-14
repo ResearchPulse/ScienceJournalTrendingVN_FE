@@ -5,9 +5,10 @@
  *
  * File: features/article/components/KeywordTopicCard.jsx
  */
-import { Card } from 'react-bootstrap';
+import React from 'react';
 import { Icon } from '@iconify/react';
 import { useNavigate } from 'react-router-dom';
+import Card from '../../../shared/ui/components/Card/Card';
 import { normalizeKeywords } from '../utils/articleFormatters';
 
 export default function KeywordTopicCard({ primaryTopic, keywords, topics = [] }) {
@@ -49,11 +50,11 @@ export default function KeywordTopicCard({ primaryTopic, keywords, topics = [] }
       style={{
         backgroundColor: 'var(--bg-card)',
         border: '1px solid var(--border)',
-        borderRadius: '16px',
-        boxShadow: '0 10px 30px rgba(0, 0, 0, 0.02)',
+        borderRadius: 'var(--radius-xl, 16px)',
+        boxShadow: 'var(--shadow-sm, 0 10px 30px rgba(0, 0, 0, 0.02))',
       }}
     >
-      <h5 className="font-display font-weight-bold text-main mb-3 d-flex align-items-center gap-2">
+      <h5 className="font-display fw-bold text-main mb-3 d-flex align-items-center gap-2">
         <Icon icon="lucide:tags" style={{ color: 'var(--primary)' }} width="20" />
         Từ khóa & Chủ đề (Keywords & Topics)
       </h5>
@@ -80,7 +81,7 @@ export default function KeywordTopicCard({ primaryTopic, keywords, topics = [] }
                     onClick={() => handleKeywordClick(keyword)}
                     className="px-3 py-1 rounded-pill font-display text-main fw-semibold"
                     title="Xem các bài báo theo keyword này"
-                    style={{ cursor: 'pointer', backgroundColor: 'rgba(0,0,0,0.07)', border: '1px solid rgba(0,0,0,0.10)' }}
+                    style={{ cursor: 'pointer', backgroundColor: 'var(--bg-chip)', border: '1px solid var(--border)' }}
                   >
                     {keyword.display_name}
                   </span>
@@ -104,19 +105,19 @@ export default function KeywordTopicCard({ primaryTopic, keywords, topics = [] }
           {hasTopics && (
             <section>
               <div className="d-flex align-items-center gap-2 mb-2">
-              <Icon icon="lucide:network" width="14" style={{ color: 'var(--primary)' }} />
-              <span className="text-uppercase fw-semibold" style={{ fontSize: '0.7rem', color: 'var(--text-muted)', letterSpacing: '0.5px' }}>
-                Topics (đang phát triển)
-              </span>
-            </div>
+                <Icon icon="lucide:network" width="14" style={{ color: 'var(--primary)' }} />
+                <span className="text-uppercase fw-semibold" style={{ fontSize: '0.7rem', color: 'var(--text-muted)', letterSpacing: '0.5px' }}>
+                  Topics (đang phát triển)
+                </span>
+              </div>
 
               <div className="d-flex flex-wrap gap-2">
                 {displayTopics.map((topic) => (
                   <span
                     key={`topic-${topic.topic_id || topic.display_name}`}
-                    className="px-3 py-1 rounded-pill font-display text-main fw-semibold"
+                    className="px-3 py-1 rounded-pill font-display text-main fw-semibold d-inline-flex align-items-center gap-1"
                     title="Topic route chưa hoàn thiện"
-                    style={{ cursor: 'pointer', backgroundColor: 'rgba(0,0,0,0.07)', border: '1px solid rgba(0,0,0,0.10)' }}
+                    style={{ cursor: 'pointer', backgroundColor: 'var(--bg-chip)', border: '1px solid var(--border)' }}
                   >
                     {topic.is_primary && <Icon icon="lucide:star" width="12" />}
                     {topic.display_name}

@@ -1,0 +1,50 @@
+:root {
+  /* Brand & LENS palette */
+  --color-lens-dark-blue: #1F2F40;
+  --color-lens-light-blue: #293B4D;
+  --color-lens-link-blue: #2B54B2;
+  --color-lens-card-bg: #F8FAFD;
+  --color-lens-border-blue: #D8E7F4;
+  --color-lens-badge-blue: #0094D3;
+  --color-lens-badge-orange: #FFA200;
+  --color-lens-badge-green: #2EA751;
+  --color-lens-slate-gray: #414E59;
+
+  /* Surfaces */
+  --bg-main: #ffffff; /* Background chính */
+  --bg-section: #ececec; /* Section / card background */
+  --bg-chip: #f2f2f2; /* Chip / filter background */
+  --bg-card: #ffffff; /* White card surface */
+  --border: #e6e6e6; /* Border / divider */
+
+  /* Text */
+  --text-main: #0d1b1c; /* Text chính */
+  --text-muted: #6b6b6b; /* Text phụ */
+
+  /* Accents */
+  --primary: #1976d2; /* Accent / link xanh dương (Lens Blue) */
+  --primary-hover: #1565c0; /* Hover/active state của primary */
+  --primary-light: #eaf4ff; /* Light tint của xanh dương */
+  --teal: #00acc1; /* Action accent thứ hai (search, active tab) */
+  --teal-dark: #00838f; /* Hover state của teal */
+  --btn-dark: #071a1c; /* Button đen đậm */
+  --q1-color: #1976d2; /* Q1 badge dùng accent xanh dương */
+
+  /* Compatibility aliases */
+  --dark-bg: var(--bg-main);
+  --dark-card: var(--bg-card);
+  --dark-border: var(--border);
+  --brand-accent: var(--primary);
+  --glow-accent: rgba(25, 118, 210, 0.08);
+
+  /* Header Navigation Theme */
+  --header-bg: #132B40;
+  --header-border: rgba(255, 255, 255, 0.1);
+  --header-nav-active-bg: rgba(25, 118, 210, 0.25);
+  --header-nav-active-color: #FFFFFF;
+  --header-nav-active-border: rgba(255, 255, 255, 0.15);
+  --header-nav-inactive-color: rgba(255, 255, 255, 0.75);
+  --header-nav-inactive-border: transparent;
+  --header-brand-primary: #1976D2;
+  --header-brand-primary-shadow: rgba(25, 118, 210, 0.3);
+}

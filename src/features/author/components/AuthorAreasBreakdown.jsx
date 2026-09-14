@@ -4,8 +4,8 @@
  */
 
 import { Row, Col, Card } from 'react-bootstrap';
-import LoadingSkeleton from '../../../shared/components/LoadingSkeleton';
-import EmptyState from '../../../shared/components/EmptyState';
+import LoadingSkeleton from '../../../shared/ui/components/Skeleton/LoadingSkeleton';
+import EmptyState from '../../../shared/ui/feedback/EmptyState/EmptyState';
 
 export default function AuthorAreasBreakdown({ breakdown = [], loading = false, error = null }) {
   const breakdownItems = Array.isArray(breakdown) ? breakdown : [];

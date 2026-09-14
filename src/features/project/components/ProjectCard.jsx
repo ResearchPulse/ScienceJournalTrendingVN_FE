@@ -1,14 +1,19 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import { useProjectText } from '../i18n/useProjectText';
+import Card from '../../../shared/ui/components/Card/Card';
+import Badge from '../../../shared/ui/components/Badge/Badge';
 
-
-const ProjectCard = ({ project, onDelete }) => {
+const ProjectCard = ({ project = {}, onDelete }) => {
   const p = useProjectText();
+
   const handleDelete = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    onDelete(project);
+    if (typeof onDelete === 'function') {
+      onDelete(project);
+    }
   };
 
   const title = project.title || p('untitledProject');
@@ -30,20 +35,23 @@ const ProjectCard = ({ project, onDelete }) => {
 
   return (
     <Link to={`/projects/${project.project_id || project.id}`} className="text-decoration-none">
-      <article className="card glass-card project-card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
+      <Card as="article" className="glass-card project-card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
         <div className="card-body p-4 d-flex flex-column">
           <div className="d-flex justify-content-between align-items-start mb-3">
-            <span className="badge rounded-pill text-primary fw-medium" style={{ backgroundColor: 'var(--primary-light)' }}>
+            <Badge variant="primary" className="rounded-pill fw-medium">
               {areaName}
-            </span>
-            <button 
-              className="btn btn-sm btn-link text-muted p-0 ms-2 hover-danger" 
-              onClick={handleDelete}
-              title={p('deleteProject')}
-              aria-label={`${p('deleteProject')} ${title}`}
-            >
-              <Icon icon="lucide:trash-2" width="18" />
-            </button>
+            </Badge>
+            {onDelete && (
+              <button 
+                type="button"
+                className="btn btn-sm btn-link text-muted p-0 ms-2 hover-danger" 
+                onClick={handleDelete}
+                title={p('deleteProject')}
+                aria-label={`${p('deleteProject')} ${title}`}
+              >
+                <Icon icon="lucide:trash-2" width="18" />
+              </button>
+            )}
           </div>
           
           <h5 className="card-title font-display fw-bold text-main mb-3" style={{ fontSize: '1.25rem' }}>
@@ -91,7 +99,7 @@ const ProjectCard = ({ project, onDelete }) => {
             </div>
           </div>
         </div>
-      </article>
+      </Card>
     </Link>
   );
 };

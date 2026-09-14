@@ -5,10 +5,10 @@
  */
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Icon from '../../../../shared/components/Icon';
+import Icon from '../../../../shared/ui/primitives/Icon';
 import StatusBadge from '../shared/StatusBadge';
 import AdminProgressBar from '../layout/AdminProgressBar';
-import Pagination from '../../../../shared/components/Pagination';
+import Pagination from '../../../../shared/ui/components/Pagination/Pagination';
 import { exportAdminVolumeIssueStatusCsv } from '../../api/adminDashboard.api';
 import { useTranslation } from 'react-i18next';
 

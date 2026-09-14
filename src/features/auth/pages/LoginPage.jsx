@@ -12,7 +12,7 @@ import LoginForm from '../components/LoginForm';
 import SocialAuthButton from '../components/SocialAuthButton';
 import { toast } from '../../../shared/utils/toast';
 import { isInAppBrowser } from '../../../shared/utils/inAppBrowser';
-import ROUTES from '../../../app/routes/routePaths';
+import ROUTES from '../../../app/router/routePaths';
 
 const DASHBOARD_PAGE = ROUTES.DASHBOARD;
 

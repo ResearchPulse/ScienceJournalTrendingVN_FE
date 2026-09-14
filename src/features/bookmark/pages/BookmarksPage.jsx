@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { Button } from 'react-bootstrap';
+import Button from '../../../shared/ui/components/Button/Button';
 import { BookmarkCheck, Bookmark, Search, RefreshCw, AlertCircle, BarChart3, List } from 'lucide-react';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
@@ -18,7 +18,7 @@ import { toast } from '../../../shared/utils/toast';
 import AnalysisDashboard from '../../trendingVN/components/analysis/AnalysisDashboard';
 import WorkspaceSidebar from '../../trendingVN/components/WorkspaceSidebar';
 import BookmarkItem from '../components/BookmarkItem';
-import { ArticleCardSkeleton } from '../../../shared/components/LoadingSkeleton';
+import { ArticleCardSkeleton } from '../../../shared/ui/components/Skeleton/LoadingSkeleton';
 import '../../trendingVN/trendingVN.css';
 import './BookmarksPage.css';
 
@@ -305,7 +305,7 @@ export default function BookmarksPage() {
               <div className="bookmarks-state is-error">
                 <AlertCircle size={20} />
                 <span>{bookmarksQuery.error?.message || t('bookmarksLoadError')}</span>
-                <Button variant="outline-primary" size="sm" onClick={retry}>{t('tryAgain')}</Button>
+                <Button variant="outline" size="sm" onClick={retry}>{t('tryAgain')}</Button>
               </div>
             ) : sortedBookmarks.length === 0 ? (
               <div className="bookmarks-state">

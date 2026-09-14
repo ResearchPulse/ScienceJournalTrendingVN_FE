@@ -5,8 +5,8 @@
  */
 import { useEffect } from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import AppRoutes from './app/routes/AppRoutes';
-import AppToast from './shared/components/AppToast';
+import { AppRoutes } from './app/router';
+import { AppToast } from './shared/ui';
 import { initializeSsoSession } from './features/auth/services/ssoSession';
 import BookmarkSessionSync from './features/bookmark/components/BookmarkSessionSync';
 

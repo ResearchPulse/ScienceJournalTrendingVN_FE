@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import { Button, Alert, ProgressBar } from 'react-bootstrap';
-import Icon from '../../../../shared/components/Icon';
+import Icon from '../../../../shared/ui/primitives/Icon';
 
 /**
  * PdfDropzone Component

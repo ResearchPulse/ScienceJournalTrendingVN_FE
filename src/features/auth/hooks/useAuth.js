@@ -4,8 +4,8 @@
  * File: features/auth/hooks/useAuth.js
  */
 import { useCallback, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useGoogleLogin } from '@react-oauth/google';
+import { useNavigate } from 'react-router-dom';
 import { toast } from '../../../shared/utils/toast';
 import { useAuthStore } from '../../../app/store/authStore';
 import { useUserStore } from '../../../app/store/userStore';
@@ -19,6 +19,7 @@ import {
   resendActivationEmail,
   updateCurrentProfile,
 } from '../services/authService';
+import { ssoLogin, startGoogleSso } from '../services/centralSso';
 
 /**
  * Gom toàn bộ thao tác auth vào một hook duy nhất.
@@ -121,7 +122,7 @@ export default function useAuth() {
     try {
       const result = await loginWithPassword(email, password, remember);
 
-      if (result.token) {
+      if (result.user) {
         if (!result.user) {
           throw new Error('Phản hồi đăng nhập thiếu định danh người dùng');
         }
@@ -143,10 +144,9 @@ export default function useAuth() {
   /**
    * Mở popup/redirect Google OAuth và ghi nhớ trang cần quay lại sau login.
    */
-  const loginWithGoogle = useCallback((redirectTo = '/') => {
-    googleRedirectRef.current = redirectTo;
-    googleLogin();
-  }, [googleLogin]);
+  const loginWithGoogle = useCallback(() => {
+    startGoogleSso();
+  }, []);
 
   /**
    * Đăng ký tài khoản mới.

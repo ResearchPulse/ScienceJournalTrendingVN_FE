@@ -1,8 +1,8 @@
 import React from 'react';
 import { Table, Card, Button } from 'react-bootstrap';
 import { Icon } from '@iconify/react';
-import AdminPagination from '../../../shared/components/Pagination';
-import ScientificMathText from '../../../shared/components/ScientificMathText';
+import AdminPagination from '../../../shared/ui/components/Pagination/Pagination';
+import ScientificMathText from '../../../shared/ui/components/ScientificMath/ScientificMathText';
 
 export default function GeographyArticleList({ 
   articles = [], 

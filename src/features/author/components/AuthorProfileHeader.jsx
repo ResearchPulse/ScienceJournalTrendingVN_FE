@@ -4,7 +4,7 @@
  */
 
 import { Card, Row, Col } from 'react-bootstrap';
-import Icon from '../../../shared/components/Icon';
+import Icon from '../../../shared/ui/primitives/Icon';
 import AuthorAvatar from './AuthorAvatar';
 
 export default function AuthorProfileHeader({ author, loading = false }) {
