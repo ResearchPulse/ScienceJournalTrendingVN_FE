@@ -12,13 +12,11 @@ const TrendingVNPage = lazy(() => import("../../features/trendingVN/pages/Trendi
 const TrendingArticleDetailPage = lazy(() => import("../../features/trendingVN/pages/ArticleDetailPage"));
 const InstitutionDetailPage = lazy(() => import("../../features/institution/pages/InstitutionDetailPage"));
 
-const RegisterPage = lazy(() => import("../../features/auth/pages/RegisterPage"));
-const LoginPage = lazy(() => import("../../features/auth/pages/ResearchPulseLoginPage"));
+const LoginPage = lazy(() => import("../../features/auth/pages/SsoLoginRedirectPage"));
 const SsoCallbackPage = lazy(() => import("../../features/auth/pages/SsoCallbackPage"));
 const ProfilePage = lazy(() => import("../../features/profile/pages/ProfilePage"));
 const VerifyEmailPage = lazy(() => import("../../features/auth/pages/VerifyEmailPage"));
-const ForgotPasswordPage = lazy(() => import("../../features/auth/pages/ForgotPasswordPage"));
-const ResetPasswordPage = lazy(() => import("../../features/auth/pages/ResetPasswordPage"));
+const SsoPortalRedirectPage = lazy(() => import("../../features/auth/pages/SsoPortalRedirectPage"));
 
 const AuthorDetailPage = lazy(() => import("../../features/author/pages/AuthorDetailPage"));
 const AuthorListPage = lazy(() => import("../../features/author/pages/AuthorListPage"));
@@ -56,7 +54,7 @@ export default function AppRoutes() {
 
         <Route element={<PublicRoute />}>
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/register" element={<SsoPortalRedirectPage />} />
         </Route>
 
         {/* Routes sử dụng layout chung */}
@@ -125,8 +123,8 @@ export default function AppRoutes() {
 
           <Route path="/institutions/:id" element={<InstitutionDetailPage />} />
 
-          <Route path="/forgot-password" element={<ForgotPasswordPage />} />
-          <Route path="/reset-password" element={<ResetPasswordPage />} />
+          <Route path="/forgot-password" element={<SsoPortalRedirectPage />} />
+          <Route path="/reset-password" element={<SsoPortalRedirectPage />} />
         </Route>
 
         <Route
