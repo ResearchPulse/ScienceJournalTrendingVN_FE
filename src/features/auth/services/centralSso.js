@@ -7,7 +7,7 @@ const configuredOrDevelopmentFallback = (value, fallback) => (
 );
 
 export const SSO_API_URL = configuredOrDevelopmentFallback(
-  import.meta.env.VITE_SSO_API_URL,
+  import.meta.env.VITE_SSO_ISSUER_URL || import.meta.env.VITE_SSO_API_URL,
   'http://localhost:3001',
 );
 export const SSO_CLIENT_ID = configuredOrDevelopmentFallback(
